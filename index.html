@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixit UAE — Home Services | One Call. Fix It All!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E2A47; --navy2:#0A1F38; --navy-soft:#E7ECF2;
+    --orange:#FF6B2C; --orange-soft:#FFE7DA; --amber:#FFB400;
+    --bg:#F5F7FA; --white:#FFFFFF; --text:#1F2533; --muted:#6B7280;
+    --border:#E5E8EC; --green:#1E9E5A; --green-soft:#E4F7EC;
+    --radius:16px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Inter',sans-serif; color:var(--text); background:var(--bg); line-height:1.6;}
+  h1,h2,h3,h4{font-family:'Poppins',sans-serif; color:var(--text); line-height:1.25;}
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; font-family:'Inter',sans-serif; font-weight:700; font-size:14.5px; padding:13px 24px; border-radius:12px; border:none; cursor:pointer; transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--orange); color:#fff;}
+  .btn-navy{background:var(--navy); color:#fff;}
+  .btn-outline{background:#fff; color:var(--navy); border:1.5px solid var(--border);}
+  .btn-whatsapp{background:#25D366; color:#fff;}
+  .eyebrow{display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--orange); background:var(--orange-soft); padding:6px 14px; border-radius:20px;}
+  .section{padding:72px 0;}
+  .section-head{text-align:center; max-width:620px; margin:0 auto 44px;}
+  .section-head h2{font-size:32px; font-weight:700; margin:12px 0 10px;}
+  .section-head p{color:var(--muted); font-size:15px;}
+
+  /* ===== Header ===== */
+  header{position:sticky; top:0; z-index:50; background:rgba(10,31,56,0.97); backdrop-filter:blur(6px);}
+  .topbar{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-name{font-family:'Poppins',sans-serif; font-weight:800; font-size:20px; color:#fff; letter-spacing:.3px;}
+  .brand-name span{color:var(--orange);}
+  .brand-sub{font-size:9.5px; letter-spacing:.18em; color:#9DAFC4; font-weight:700; margin-top:-2px;}
+  nav{display:flex; gap:28px;}
+  nav a{color:#CBD6E3; font-weight:600; font-size:14px;}
+  nav a:hover{color:#fff;}
+  .topbar-actions{display:flex; align-items:center; gap:10px;}
+  .phone-pill{display:flex; align-items:center; gap:8px; color:#fff; font-weight:700; font-size:13.5px;}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer;}
+  @media (max-width:880px){
+    nav{display:none;}
+    .phone-pill{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{background:linear-gradient(160deg, var(--navy) 60%, var(--navy2) 100%); color:#fff; padding:64px 0 0; position:relative; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding-bottom:60px;}
+  .hero h1{font-size:44px; font-weight:800; line-height:1.12; margin:18px 0 16px;}
+  .hero h1 .accent{color:var(--orange);}
+  .hero p{color:#B9C4D3; font-size:16px; max-width:480px; margin-bottom:28px;}
+  .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:32px;}
+  .hero-chips{display:flex; gap:10px; flex-wrap:wrap;}
+  .chip{display:flex; align-items:center; gap:7px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.14); padding:8px 14px; border-radius:20px; font-size:12.5px; font-weight:600; color:#E7ECF2;}
+  .hero-visual{display:flex; align-items:center; justify-content:center; position:relative;}
+  .hero-card{background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:24px; padding:26px; width:100%; max-width:340px;}
+  .rating-row{display:flex; align-items:center; gap:10px; margin-bottom:16px;}
+  .avatar-stack{display:flex;}
+  .avatar-stack div{width:30px; height:30px; border-radius:50%; background:var(--orange); border:2px solid var(--navy); margin-left:-8px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:#fff;}
+  .hero-strip{background:var(--orange); padding:0;}
+  .hero-strip-inner{display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; padding:18px 0; color:var(--navy2); font-weight:700; font-size:13.5px;}
+  .hero-strip-inner div{display:flex; align-items:center; gap:8px;}
+
+  /* ===== Trust / stats ===== */
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:-1px;}
+  .stat-card{background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:22px; text-align:center;}
+  .stat-num{font-family:'Poppins'; font-weight:800; font-size:26px; color:var(--navy);}
+  .stat-label{font-size:12.5px; color:var(--muted); font-weight:600; margin-top:4px;}
+  @media (max-width:760px){.stats{grid-template-columns:1fr 1fr;}}
+
+  /* ===== Services ===== */
+  .svc-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:980px){.svc-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+  .svc-card{background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:20px; display:flex; flex-direction:column; position:relative; transition:box-shadow .15s, transform .15s;}
+  .svc-card:hover{box-shadow:0 14px 30px rgba(14,42,71,0.10); transform:translateY(-3px);}
+  .svc-num{position:absolute; top:14px; right:16px; font-size:11px; font-weight:800; color:var(--border);}
+  .svc-icon{width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+  .svc-card h3{font-size:16px; margin-bottom:8px;}
+  .svc-card h3 span{color:var(--orange);}
+  .svc-list{list-style:none; margin:0 0 16px; flex:1;}
+  .svc-list li{font-size:12.5px; color:var(--muted); display:flex; gap:7px; align-items:flex-start; margin-bottom:6px;}
+  .svc-list li::before{content:"✓"; color:var(--green); font-weight:800; flex-shrink:0;}
+  .svc-actions{display:flex; gap:8px;}
+  .svc-actions .btn{flex:1; padding:10px 8px; font-size:12px;}
+
+  /* ===== Emergency banner ===== */
+  .emergency{background:var(--navy2); color:#fff; border-radius:24px; padding:36px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+  .emergency h3{color:#fff; font-size:22px; margin-bottom:8px;}
+  .emergency p{color:#9DAFC4; font-size:13.5px; max-width:420px;}
+  .pulse{width:14px; height:14px; border-radius:50%; background:var(--orange); position:relative; flex-shrink:0;}
+  .pulse::after{content:""; position:absolute; inset:-6px; border-radius:50%; border:2px solid var(--orange); animation:pulse 1.6s ease-out infinite;}
+  @keyframes pulse{0%{transform:scale(.6); opacity:1;}100%{transform:scale(1.8); opacity:0;}}
+
+  /* ===== How it works ===== */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  @media (max-width:880px){.steps{grid-template-columns:1fr 1fr;}}
+  .step-card{text-align:center; padding:10px;}
+  .step-num{width:46px; height:46px; border-radius:50%; background:var(--navy); color:#fff; font-family:'Poppins'; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:16px;}
+  .step-card h4{font-size:14.5px; margin-bottom:6px;}
+  .step-card p{font-size:12.5px; color:var(--muted);}
+
+  /* ===== Cities ===== */
+  .city-grid{display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
+  .city-chip{background:#fff; border:1.5px solid var(--border); padding:10px 18px; border-radius:20px; font-weight:600; font-size:13px; display:flex; align-items:center; gap:7px;}
+
+  /* ===== Testimonials ===== */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:880px){.testi-grid{grid-template-columns:1fr;}}
+  .testi-card{background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:22px;}
+  .stars{color:var(--amber); font-size:13px; margin-bottom:10px;}
+  .testi-card p{font-size:13.5px; color:var(--text); margin-bottom:16px;}
+  .testi-who{display:flex; align-items:center; gap:10px;}
+  .testi-avatar{width:36px; height:36px; border-radius:50%; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; font-family:'Poppins';}
+  .testi-who small{color:var(--muted); display:block; font-size:11.5px;}
+
+  /* ===== CTA band ===== */
+  .cta-band{background:linear-gradient(120deg, var(--orange), #FF8A50); border-radius:24px; padding:44px; text-align:center; color:#fff;}
+  .cta-band h2{color:#fff; font-size:28px; margin-bottom:10px;}
+  .cta-band p{color:#FFE3D2; margin-bottom:24px;}
+  .cta-band .btn-outline{background:#fff; color:var(--orange); border:none;}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy2); color:#B9C4D3; padding:56px 0 26px; margin-top:30px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:36px; margin-bottom:36px;}
+  @media (max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  footer h4{color:#fff; font-size:14px; margin-bottom:14px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:9px; font-size:13px;}
+  footer ul li a:hover{color:#fff;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:12px; color:#7E92AA;}
+
+  /* Floating WhatsApp */
+  .float-wa{position:fixed; bottom:24px; right:24px; width:56px; height:56px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(0,0,0,0.25); z-index:60; cursor:pointer;}
+
+  .icon-row{display:flex; gap:10px; align-items:center;}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap topbar">
+    <div class="brand">
+      <svg width="42" height="38" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+        <line x1="2" y1="118" x2="34" y2="118" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.9"/>
+        <line x1="10" y1="100" x2="34" y2="100" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.6"/>
+        <line x1="16" y1="136" x2="34" y2="136" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity="0.6"/>
+        <polygon points="40,72 88,22 136,72" fill="#fff"/>
+        <rect x="56" y="72" width="64" height="58" rx="5" fill="#FF6B2C"/>
+        <rect x="71" y="92" width="13" height="13" fill="#fff"/>
+        <rect x="92" y="92" width="13" height="13" fill="#fff"/>
+        <rect x="71" y="111" width="13" height="13" fill="#fff"/>
+        <rect x="92" y="111" width="13" height="13" fill="#fff"/>
+        <g transform="rotate(-38 100 90)">
+          <rect x="35" y="80" width="130" height="20" rx="10" fill="#fff"/>
+          <circle cx="35" cy="90" r="19" fill="#fff"/>
+          <circle cx="35" cy="90" r="9" fill="#0A1F38"/>
+          <circle cx="165" cy="90" r="16" fill="#FF6B2C"/>
+          <circle cx="165" cy="90" r="7" fill="#0A1F38"/>
+        </g>
+      </svg>
+      <div>
+        <div class="brand-name">FIX<span>IT</span> UAE</div>
+        <div class="brand-sub">HOME SERVICES</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#emergency">Emergency</a>
+      <a href="#cities">Cities</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="topbar-actions">
+      <div class="phone-pill">📞 800-FIXIT (349 48)</div>
+      <a href="#contact" class="btn btn-primary">Book now</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Trusted across the UAE</span>
+      <h1>One call. <span class="accent">Fix it all!</span></h1>
+      <p>Book vetted technicians for plumbing, electrical, AC, carpentry and more — anywhere in the UAE. Transparent pricing, fast response, real reviews.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary">Book a service</a>
+        <a href="https://wa.me/971500000000" class="btn btn-whatsapp">WhatsApp us</a>
+      </div>
+      <div class="hero-chips">
+        <span class="chip">💧 Plumbing</span>
+        <span class="chip">⚡ Electrical</span>
+        <span class="chip">❄️ AC</span>
+        <span class="chip">🪚 Carpentry</span>
+        <span class="chip">🔨 Handyman</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="rating-row">
+          <div class="avatar-stack">
+            <div>SA</div><div>OH</div><div>LY</div>
+          </div>
+          <div>
+            <div style="font-weight:700; font-size:13.5px;">4.8 ★ rating</div>
+            <div style="font-size:11.5px; color:#9DAFC4;">12,400+ jobs completed</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07); border-radius:14px; padding:16px; margin-bottom:12px;">
+          <div style="font-size:12px; color:#9DAFC4; margin-bottom:4px;">Booking #FX-48217</div>
+          <div style="font-weight:700; font-size:14px; margin-bottom:6px;">AC Repair & Maintenance</div>
+          <div style="font-size:12px; color:#9DAFC4;">Today · 2:00 PM – 4:00 PM · Dubai Marina</div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:12.5px; color:#9DAFC4;">Technician arriving in</span>
+          <span style="font-weight:800; color:#FF6B2C; font-family:'Poppins';">18 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="wrap hero-strip-inner">
+      <div>⚡ Fast response</div>
+      <div>★ Trusted professionals</div>
+      <div>🛡️ Licensed & insured</div>
+      <div>🕐 24/7 emergency support</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="section" style="padding-top:50px;">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat-card"><div class="stat-num">12,400+</div><div class="stat-label">Jobs completed</div></div>
+      <div class="stat-card"><div class="stat-num">4.8 ★</div><div class="stat-label">Average rating</div></div>
+      <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Emirates covered</div></div>
+      <div class="stat-card"><div class="stat-num">&lt;60 min</div><div class="stat-label">Emergency response</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Your home. Our priority.</span>
+      <h2>Services we fix, install & maintain</h2>
+      <p>12 categories covering everything your home needs — booked in under 3 steps.</p>
+    </div>
+    <div class="svc-grid">
+
+      <div class="svc-card"><span class="svc-num">01</span>
+        <div class="svc-icon" style="background:#E6F1FB;">💧</div>
+        <h3>Plumbing <span>Services</span></h3>
+        <ul class="svc-list"><li>Faucet repair</li><li>Pipe leak repair</li><li>Toilet installation</li><li>Water heater services</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">02</span>
+        <div class="svc-icon" style="background:#E6F1FB;">🚰</div>
+        <h3>Drain <span>Cleaning</span></h3>
+        <ul class="svc-list"><li>Kitchen drain cleaning</li><li>Bathroom drain cleaning</li><li>Blocked pipes</li><li>Bad odor removal</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">03</span>
+        <div class="svc-icon" style="background:#FAEEDA;">⚡</div>
+        <h3>Electrical <span>Services</span></h3>
+        <ul class="svc-list"><li>Socket installation</li><li>Switch repair</li><li>Lighting installation</li><li>MCB & wiring</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">04</span>
+        <div class="svc-icon" style="background:#E1F5EE;">❄️</div>
+        <h3>AC <span>Services</span></h3>
+        <ul class="svc-list"><li>AC cleaning</li><li>AC gas refill</li><li>AC repair</li><li>Preventive maintenance</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">05</span>
+        <div class="svc-icon" style="background:#FAECE7;">🪚</div>
+        <h3>Carpentry <span>Services</span></h3>
+        <ul class="svc-list"><li>Door repair</li><li>Cabinet repair</li><li>Shelves installation</li><li>Custom woodwork</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">06</span>
+        <div class="svc-icon" style="background:#EEEDFE;">🪑</div>
+        <h3>Furniture <span>Assembly</span></h3>
+        <ul class="svc-list"><li>IKEA assembly</li><li>Bed assembly</li><li>Wardrobe installation</li><li>Table & chair assembly</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">07</span>
+        <div class="svc-icon" style="background:#FBEAF0;">🔨</div>
+        <h3>Handyman <span>Services</span></h3>
+        <ul class="svc-list"><li>Wall mounting</li><li>Curtain installation</li><li>Door lock repair</li><li>General repairs</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">08</span>
+        <div class="svc-icon" style="background:#E6F1FB;">🖌️</div>
+        <h3>Painting <span>Services</span></h3>
+        <ul class="svc-list"><li>Apartment painting</li><li>Villa painting</li><li>Touch-up painting</li><li>Wall repair & painting</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">09</span>
+        <div class="svc-icon" style="background:#F1EFE8;">📺</div>
+        <h3>TV <span>Mounting</span></h3>
+        <ul class="svc-list"><li>TV wall mount</li><li>Cable concealment</li><li>Bracket installation</li><li>All TV sizes</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">10</span>
+        <div class="svc-icon" style="background:#FAEEDA;">🔥</div>
+        <h3>Water Heater <span>Services</span></h3>
+        <ul class="svc-list"><li>Water heater installation</li><li>Water heater repair</li><li>Thermostat replacement</li><li>Regular maintenance</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card" style="border-color:#F0997B;"><span class="svc-num">11</span>
+        <div class="svc-icon" style="background:#FAECE7;">🚨</div>
+        <h3>Emergency <span>Services</span></h3>
+        <ul class="svc-list"><li>Urgent plumbing</li><li>Electrical emergency</li><li>AC breakdown</li><li>Quick repairs · 24/7</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#emergency">Book now</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+      <div class="svc-card"><span class="svc-num">12</span>
+        <div class="svc-icon" style="background:#EAF3DE;">🏠</div>
+        <h3>Annual Maintenance <span>(AMC)</span></h3>
+        <ul class="svc-list"><li>Plumbing check</li><li>Electrical check</li><li>AC maintenance</li><li>Priority support & savings</li></ul>
+        <div class="svc-actions"><a class="btn btn-primary" href="#contact">Get a plan</a><a class="btn btn-outline" href="https://wa.me/971500000000">💬</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Simple by design</span>
+      <h2>Booked in 3 easy steps</h2>
+      <p>No quotes back and forth. Pick a service, choose a slot, get it fixed.</p>
+    </div>
+    <div class="steps">
+      <div class="step-card"><div class="step-num">1</div><h4>Choose your service</h4><p>Pick from 12 categories, see the starting price upfront.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h4>Select date & time</h4><p>Pick a slot that works — even same-day and emergency visits.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h4>Technician arrives</h4><p>Track your technician live, right to your door.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h4>Pay & review</h4><p>Cash, card or Apple Pay. Rate your technician afterwards.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMERGENCY ============ -->
+<section class="section" id="emergency">
+  <div class="wrap">
+    <div class="emergency">
+      <div style="display:flex; gap:16px; align-items:flex-start;">
+        <div class="pulse" style="margin-top:8px;"></div>
+        <div>
+          <h3>24/7 emergency response</h3>
+          <p>Burst pipe, electrical fault, AC down in the heat? We dispatch a technician within 60 minutes, any time of day.</p>
+        </div>
+      </div>
+      <a href="https://wa.me/971500000000" class="btn btn-primary">Request emergency visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CITIES ============ -->
+<section class="section" id="cities" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Coverage</span>
+      <h2>Serving all 7 emirates</h2>
+      <p>Wherever you are in the UAE, Fixit is nearby.</p>
+    </div>
+    <div class="city-grid">
+      <span class="city-chip">📍 Dubai</span>
+      <span class="city-chip">📍 Sharjah</span>
+      <span class="city-chip">📍 Ajman</span>
+      <span class="city-chip">📍 Abu Dhabi</span>
+      <span class="city-chip">📍 Ras Al Khaimah</span>
+      <span class="city-chip">📍 Fujairah</span>
+      <span class="city-chip">📍 Umm Al Quwain</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What customers say</span>
+      <h2>Trusted by homes across the UAE</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Technician was on time and very professional. Fixed the AC in 30 minutes flat."</p>
+        <div class="testi-who"><div class="testi-avatar">AK</div><div><strong>Ahmed K.</strong><small>Dubai Marina</small></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Booked a plumber at 9pm for a leak and someone was here within the hour. Lifesavers."</p>
+        <div class="testi-who"><div class="testi-avatar">FR</div><div><strong>Fatima R.</strong><small>Sharjah</small></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★☆</div>
+        <p>"Good service, fair pricing, and the AMC plan has already paid for itself this year."</p>
+        <div class="testi-who"><div class="testi-avatar">OH</div><div><strong>Omar H.</strong><small>Abu Dhabi</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND / CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>One call fixes it all.</h2>
+      <p>Tell us what's wrong and we'll handle the rest — fast response, trusted professionals.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="tel:+971800349480" class="btn btn-outline">📞 Call 800-FIXIT</a>
+        <a href="https://wa.me/971500000000" class="btn btn-navy">💬 WhatsApp us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:14px;">
+          <svg width="38" height="34" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="40,72 88,22 136,72" fill="#fff"/>
+            <rect x="56" y="72" width="64" height="58" rx="5" fill="#FF6B2C"/>
+            <rect x="71" y="92" width="13" height="13" fill="#fff"/>
+            <rect x="92" y="92" width="13" height="13" fill="#fff"/>
+            <rect x="71" y="111" width="13" height="13" fill="#fff"/>
+            <rect x="92" y="111" width="13" height="13" fill="#fff"/>
+            <g transform="rotate(-38 100 90)">
+              <rect x="35" y="80" width="130" height="20" rx="10" fill="#fff"/>
+              <circle cx="35" cy="90" r="19" fill="#fff"/>
+              <circle cx="35" cy="90" r="9" fill="#0A1F38"/>
+              <circle cx="165" cy="90" r="16" fill="#FF6B2C"/>
+              <circle cx="165" cy="90" r="7" fill="#0A1F38"/>
+            </g>
+          </svg>
+          <div class="brand-name" style="font-size:17px;">FIX<span>IT</span> UAE</div>
+        </div>
+        <p style="font-size:13px; max-width:260px;">One call. Fix it all! Trusted home maintenance technicians across all 7 emirates.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Plumbing</a></li>
+          <li><a href="#services">Electrical</a></li>
+          <li><a href="#services">AC repair</a></li>
+          <li><a href="#services">Carpentry</a></li>
+          <li><a href="#services">Handyman</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#cities">Cities we serve</a></li>
+          <li><a href="#contact">Contact us</a></li>
+          <li><a href="#">Terms & privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li>📞 800-FIXIT (349 48)</li>
+          <li>✉️ hello@fixituae.com</li>
+          <li>📍 Dubai, United Arab Emirates</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Fixit UAE Home Services. All rights reserved.</span>
+      <span>Your home. Our priority.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/971500000000" aria-label="Chat on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.07-1.33C8.51 21.5 10.21 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.57 0-3.04-.43-4.3-1.18l-.31-.18-3.18.83.84-3.1-.2-.32A7.93 7.93 0 0 1 4 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.6c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.02-.37.1-.49.1-.12.24-.31.36-.46.12-.16.16-.27.24-.45.08-.18.04-.33-.04-.46-.08-.12-.5-1.2-.68-1.65-.18-.43-.37-.37-.51-.38-.13-.01-.28-.01-.43-.01-.15 0-.39.06-.6.3-.21.24-.8.78-.8 1.9 0 1.12.81 2.2.92 2.35.12.16 1.62 2.48 3.93 3.38 2.3.9 2.3.6 2.72.56.42-.04 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+</body>
+</html>
